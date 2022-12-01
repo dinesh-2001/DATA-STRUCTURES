@@ -1,0 +1,21 @@
+class node:
+    def __init__(self,data):
+        self.key=data
+        self.right=None
+        self.left=None
+def postorder(root,k):
+    if root is None:
+        return
+    if k==0:
+        print(root.key,end=' ')
+    else:
+        postorder(root.left,k-1)
+        postorder(root.right,k-1)
+k=2
+root=node(3)
+root.left=node(4)
+root.right=node(8)
+root.left.left=node(1)
+root.left.right=node(9)
+root.left.left.left=node(10)
+postorder(root,k)
