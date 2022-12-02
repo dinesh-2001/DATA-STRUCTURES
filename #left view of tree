@@ -1,0 +1,22 @@
+class node:
+    def __init__(self,data):
+        self.key=data
+        self.right=None
+        self.left=None
+def postorder(root,curlvl,vislvl):
+    if root is None:
+        return
+    if(vislvl[0]<curlvl):
+        print(root.key,end=" ")
+        vislvl[0]=curlvl
+    
+    postorder(root.left,curlvl+1,vislvl)
+    postorder(root.right,curlvl+1,vislvl)
+root=node(3)
+root.left=node(4)
+root.right=node(18)
+root.left.left=node(1)
+root.left.right=node(9)
+root.left.left.left=node(10)
+a=[0]
+postorder(root,1,a)
