@@ -1,0 +1,37 @@
+
+class node:
+    def __init__(self,data):
+        self.key=data
+        self.right=None
+        self.left=None
+def postorder(root):
+    if root is None:
+        return
+    s1=[root]
+    s2=[]
+    while s1 or s2:
+        while s1:
+            temp=s1.pop()
+            print(temp.key,end=" ")
+            if temp.left is not None:
+                s2.append(temp.left)
+            if temp.right is not None:
+                s2.append(temp.right)
+        print()
+        while s2:
+            temp=s2.pop()
+            print(temp.key,end=" ")
+            if temp.right is not None:
+                s1.append(temp.right)
+            if temp.left is not None:
+                s1.append(temp.left)
+        print()
+root=node(10)
+root.left=node(11)
+root.right=node(12)
+root.left.left=node(13)
+root.left.right=node(14)
+root.right.left=node(15)
+root.right.right=node(16)
+a=[0]
+postorder(root)
