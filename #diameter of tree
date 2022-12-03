@@ -1,0 +1,26 @@
+class node:
+    def __init__(self,data):
+        self.key=data
+        self.left=None
+        self.right=None
+def height(root):
+    if root==None:
+        return 0
+    return 1+max(height(root.left),height(root.right))
+def diameter(root):
+    if root==None:
+        return 0
+    p_dia=1+height(root.left)+height(root.right)
+    l_dia=diameter(root.left)
+    r_dia=diameter(root.right)
+    return max(p_dia,max(l_dia,r_dia))
+root=node(10)
+root.left=node(11)
+root.right=node(12)
+root.left.left=node(13)
+root.left.right=node(14)
+root.right.left=node(15)
+root.right.right=node(16)
+root.right.left.left=node(18)
+print(diameter(root))
+    
