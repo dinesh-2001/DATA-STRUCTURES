@@ -1,0 +1,35 @@
+
+class node:
+    def __init__(self,data):
+        self.key=data
+        self.right=None
+        self.left=None
+def findpath(root,path,val):
+    if root is None:
+        return False
+    path.append(root)
+    if root.key==val:
+        return True
+    if findpath(root.left,path,val) or findpath(root.right,path,val):
+        return True
+    path.pop()
+    return False
+def lca(root,val1,val2):
+    path1=[]
+    path2=[] 
+    if findpath(root,path1,val1)== False or findpath(root,path2,val2)==False:
+        return None
+    i=0
+    while len(path1)>i and len(path2)>i:
+        if path1[i] != path2[i]:
+            break
+        i+=1
+    return path1[i-1]
+root=node(10)
+root.left=node(11)
+root.right=node(12)
+root.left.left=node(13)
+root.left.right=node(14)
+root.right.left=node(15)
+root.right.right=node(16)
+print(lca(root,15,16).key)
