@@ -1,0 +1,31 @@
+class Node:
+    def __init__(self,val):
+        self.key=val
+        self.right=None
+        self.left=None
+def lca(root,val1,val2):
+    if root is None:
+        return None
+    if root.key==val1 or root.key==val2:
+        return root
+    left=lca(root.left,val1,val2)
+    right=lca(root.right,val1,val2)
+    if right and left:
+        return root
+    if right == None:
+        return left
+    else:
+        return right
+root = Node(70)
+root.left = Node(20)
+root.right = Node(30)
+root.left.left = Node(50)
+root.left.right = Node(10)
+root.left.left.left = Node(60)
+root.left.left.right = Node(40)
+root.left.left.left.left = Node(90)
+root.left.left.right.right = Node(110)
+root.left.right.right = Node(80)
+root.left.right.right.right = Node(100)
+lca =lca(root, 90, 110)
+print("\nThe LCA is: {}".format(lca.key))
