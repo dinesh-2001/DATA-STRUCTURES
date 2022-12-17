@@ -1,0 +1,12 @@
+class Node:
+    def __init__(self,val):
+        self.key=val
+        self.right=None
+        self.left=None
+def find(root,val):
+    if root is None or root.val == val:
+        return root
+    if root.val<val:
+        return find(root.left,val)
+    else:
+        return find(root.right,val)
